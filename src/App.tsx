@@ -40,9 +40,9 @@ function App() {
         <header className="mb-8">
           <div className="flex items-center gap-3 mb-2">
             <ActivityIcon className="w-8 h-8 text-blue-500" />
-            <h1 className="text-2xl font-bold text-gray-900">Fitness Dashboard</h1>
+            <h1 className="text-2xl font-bold text-gray-900">Running Dashboard</h1>
           </div>
-          <p className="text-gray-500">Track your fitness journey and achievements</p>
+          <p className="text-gray-500">Track your running journey and achievements</p>
         </header>
 
         <section className="mb-8">
@@ -57,7 +57,7 @@ function App() {
           <h2 className="text-xl font-semibold text-gray-900 mb-4">Recent Activities</h2>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
             {safeActivities.map((activity) => (
-              <ActivityCard key={activity.id} activity={activity} />
+              <ActivityCard key={activity.activity_id} activity={activity} />
             ))}
           </div>
         </section>
