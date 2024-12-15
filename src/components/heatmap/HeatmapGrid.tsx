@@ -12,9 +12,9 @@ interface Props {
 
 export function HeatmapGrid({ weeks }: Props) {
   return (
-    <div className="grid grid-flow-col gap-1">
+    <div className="grid grid-flow-col auto-cols-fr gap-[2px]">
       {weeks.map((week, weekIndex) => (
-        <div key={weekIndex} className="grid grid-rows-7 gap-1">
+        <div key={weekIndex} className="grid grid-rows-7 gap-[2px]">
           {week.map((day, dayIndex) => (
             <HeatmapCell
               key={dayIndex}

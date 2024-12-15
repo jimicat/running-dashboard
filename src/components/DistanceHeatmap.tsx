@@ -18,7 +18,6 @@ export function DistanceHeatmap({ activities }: Props) {
   const weeks = [];
   let currentWeek = [];
   
-  // Add empty cells for the first week if needed
   const firstDayOfYear = new Date(currentYear, 0, 1);
   const firstDayOffset = firstDayOfYear.getDay();
   for (let i = 0; i < firstDayOffset; i++) {
@@ -37,26 +36,23 @@ export function DistanceHeatmap({ activities }: Props) {
     }
   });
   
-  // Add the last partial week if it exists
   if (currentWeek.length > 0) {
     weeks.push(currentWeek);
   }
 
   return (
-    <div className="bg-white rounded-xl shadow-lg p-6">
-      <div className="flex items-center justify-between mb-6">
-        <h2 className="text-2xl font-bold text-gray-800 flex items-center gap-2">
-          <Calendar className="w-6 h-6" />
+    <div className="bg-white rounded-lg shadow p-4">
+      <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 mb-4">
+        <h2 className="text-xl font-bold text-gray-800 flex items-center gap-2">
+          <Calendar className="w-5 h-5" />
           Running Distance Heatmap
         </h2>
         <HeatmapLegend />
       </div>
       
-      <div className="overflow-x-auto">
-        <div className="inline-block min-w-full">
-          <MonthLabels currentYear={currentYear} />
-          <HeatmapGrid weeks={weeks} />
-        </div>
+      <div className="w-full">
+        <MonthLabels currentYear={currentYear} />
+        <HeatmapGrid weeks={weeks} />
       </div>
     </div>
   );

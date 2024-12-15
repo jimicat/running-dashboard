@@ -40,7 +40,7 @@ function App() {
 
   return (
     <div className="min-h-screen bg-gray-100 p-6">
-      <div className="max-w-7xl mx-auto space-y-8">
+      <div className="max-w-4xl mx-auto space-y-8">
         <h1 className="text-3xl font-bold text-gray-900">Running Dashboard</h1>
         <AnnualSummary activities={activities} />
         <DistanceHeatmap activities={activities} />
