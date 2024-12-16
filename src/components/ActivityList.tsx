@@ -1,90 +1,42 @@
-import { RunningActivity } from '../types';
-import { ChevronRight, ChevronDown, Calendar, Clock, Heart, Flame, Route } from 'lucide-react';
-import { formatActivityDate } from '../utils/dateUtils';
 import { useState } from 'react';
+import { RunningActivity } from '../../src/types';
+import { ActivityCard } from './ActivityCard';
+import { ActivityDetails } from './ActivityDetails';
+import { List } from 'lucide-react';
 
 interface Props {
   activities: RunningActivity[];
 }
 
 export function ActivityList({ activities }: Props) {
-  const [selectedActivityId, setSelectedActivityId] = useState<string | null>(null);
+  const currentYear = new Date().getFullYear();  // 获取当前年份
+  // 过滤出今年的活动并按时间降序排序
+  const thisYearActivities = activities
+    .filter((act) => new Date(act.start_date_local).getFullYear() === currentYear)
+    .sort((a, b) => new Date(b.start_date_local).getTime() - new Date(a.start_date_local).getTime());
 
-  const toggleActivity = (activityId: string) => {
+  const [selectedActivityId, setSelectedActivityId] = useState<number | null>(null);
+
+  const toggleActivity = (activityId: number) => {
     setSelectedActivityId(selectedActivityId === activityId ? null : activityId);
   };
 
   return (
     <div className="bg-white rounded-xl shadow-lg p-6">
-      <h2 className="text-xl font-bold mb-6 text-gray-800">Running Activities</h2>
+      <h2 className="text-1g font-bold mb-6 text-gray-800 flex items-center gap-2">
+        <List className="w-6 h-6" />
+        活动列表
+      </h2>
       <div className="space-y-4">
-        {activities.map((activity) => (
-          <div key={activity.activity_id} className="border rounded-lg overflow-hidden">
-            <div
-              className="flex items-center justify-between p-4 cursor-pointer hover:bg-gray-50"
-              onClick={() => toggleActivity(activity.activity_id)}
-            >
-              <div className="flex items-center gap-4">
-                {selectedActivityId === activity.activity_id ? (
-                  <ChevronDown className="w-4 h-4 text-gray-500" />
-                ) : (
-                  <ChevronRight className="w-4 h-4 text-gray-500" />
-                )}
-                <div>
-                  <h3 className="font-semibold text-gray-800">{activity.name}</h3>
-                  <p className="text-sm text-gray-500">{formatActivityDate(activity.start_time)}</p>
-                </div>
-              </div>
-              <span className="text-sm font-medium text-gray-600">{activity.distance.toFixed(2)} km</span>
-            </div>
-            
-            {selectedActivityId === activity.activity_id && (
-              <div className="p-4 bg-gray-50 border-t">
-                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
-                  <div className="flex items-center gap-3">
-                    <Route className="w-4 h-4 text-blue-500" />
-                    <div>
-                      <p className="text-sm text-gray-500">Distance</p>
-                      <p className="font-semibold">{activity.distance.toFixed(2)} km</p>
-                    </div>
-                  </div>
-                  <div className="flex items-center gap-3">
-                    <Clock className="w-4 h-4 text-green-500" />
-                    <div>
-                      <p className="text-sm text-gray-500">Duration</p>
-                      <p className="font-semibold">{activity.moving_time}</p>
-                    </div>
-                  </div>
-                  <div className="flex items-center gap-3">
-                    <Flame className="w-4 h-4 text-orange-500" />
-                    <div>
-                      <p className="text-sm text-gray-500">Calories</p>
-                      <p className="font-semibold">{activity.calories} kcal</p>
-                    </div>
-                  </div>
-                  <div className="flex items-center gap-3">
-                    <Heart className="w-4 h-4 text-red-500" />
-                    <div>
-                      <p className="text-sm text-gray-500">Average Heart Rate</p>
-                      <p className="font-semibold">{activity.avg_hr} bpm</p>
-                    </div>
-                  </div>
-                  <div className="flex items-center gap-3">
-                    <Heart className="w-4 h-4 text-red-600" />
-                    <div>
-                      <p className="text-sm text-gray-500">Max Heart Rate</p>
-                      <p className="font-semibold">{activity.max_hr} bpm</p>
-                    </div>
-                  </div>
-                  <div className="flex items-center gap-3">
-                    <Calendar className="w-4 h-4 text-purple-500" />
-                    <div>
-                      <p className="text-sm text-gray-500">Date</p>
-                      <p className="font-semibold">{formatActivityDate(activity.start_time)}</p>
-                    </div>
-                  </div>
-                </div>
-              </div>
+        {thisYearActivities.map((activity) => (
+          <div key={activity.run_id} className="border rounded-lg overflow-hidden">
+            <ActivityCard
+              activity={activity}
+              isSelected={selectedActivityId === activity.run_id}
+              onToggle={() => toggleActivity(activity.run_id)}
+            />
+            {selectedActivityId === activity.run_id && (
+              <ActivityDetails activity={activity} />
             )}
           </div>
         ))}

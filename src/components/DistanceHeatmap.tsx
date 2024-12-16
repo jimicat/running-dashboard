@@ -42,9 +42,9 @@ export function DistanceHeatmap({ activities }: Props) {
   return (
     <div className="bg-white rounded-lg shadow p-4">
       <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 mb-4">
-        <h2 className="text-xl font-bold text-gray-800 flex items-center gap-2">
+        <h2 className="text-1g font-bold text-gray-800 flex items-center gap-2">
           <Calendar className="w-5 h-5" />
-          Running Distance Heatmap
+          热力图
         </h2>
         <HeatmapLegend />
       </div>

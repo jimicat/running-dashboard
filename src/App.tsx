@@ -1,5 +1,6 @@
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { RunningActivity } from './types';
+import { fetchActivities } from './utils/api';
 import { AnnualSummary } from './components/AnnualSummary';
 import { ActivityList } from './components/ActivityList';
 import { DistanceHeatmap } from './components/DistanceHeatmap';
@@ -10,8 +11,7 @@ function App() {
   const [error, setError] = useState<string | null>(null);
 
   useEffect(() => {
-    fetch('https://python-activities-api.vercel.app/api/activities')
-      .then(response => response.json())
+    fetchActivities()
       .then(data => {
         setActivities(data);
         setLoading(false);
@@ -40,7 +40,7 @@ function App() {
 
   return (
     <div className="min-h-screen bg-gray-100 p-6">
-      <div className="max-w-4xl mx-auto space-y-8">
+      <div className="max-w-3xl mx-auto space-y-8">
         <h1 className="text-3xl font-bold text-gray-900">Running Dashboard</h1>
         <AnnualSummary activities={activities} />
         <DistanceHeatmap activities={activities} />
