@@ -1,5 +1,3 @@
-import React from 'react';
-
 export function HeatmapLegend() {
   const intensities = [
     { label: 'No activity', color: 'bg-gray-100' },

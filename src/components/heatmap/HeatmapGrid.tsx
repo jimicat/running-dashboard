@@ -1,4 +1,3 @@
-import React from 'react';
 import { HeatmapCell } from './HeatmapCell';
 
 interface DayData {

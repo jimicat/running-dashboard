@@ -1,4 +1,3 @@
-import React from 'react';
 import { RunningActivity } from '../types';
 import { Activity, Timer, Heart, Flame, Route } from 'lucide-react';
 

@@ -1,4 +1,3 @@
-import React from 'react';
 import { format } from 'date-fns';
 import { getIntensityColor } from '../../utils/dateUtils';
 

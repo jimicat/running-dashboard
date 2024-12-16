@@ -1,4 +1,3 @@
-import React from 'react';
 import { Calendar } from 'lucide-react';
 import { RunningActivity } from '../types';
 import { getActivityByDate, getAllDaysInYear } from '../utils/dateUtils';
@@ -16,7 +15,7 @@ export function DistanceHeatmap({ activities }: Props) {
   const allDays = getAllDaysInYear(currentYear);
   
   const weeks = [];
-  let currentWeek = [];
+  let currentWeek: ({ date: string; distance: number; } | null)[] = [];
   
   const firstDayOfYear = new Date(currentYear, 0, 1);
   const firstDayOffset = firstDayOfYear.getDay();

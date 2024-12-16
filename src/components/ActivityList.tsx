@@ -1,7 +1,7 @@
-import React, { useState } from 'react';
 import { RunningActivity } from '../types';
 import { ChevronRight, ChevronDown, Calendar, Clock, Heart, Flame, Route } from 'lucide-react';
 import { formatActivityDate } from '../utils/dateUtils';
+import { useState } from 'react';
 
 interface Props {
   activities: RunningActivity[];
