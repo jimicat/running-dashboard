@@ -1,4 +1,4 @@
-import { HeatmapCell } from './HeatmapCell';
+import { HeatmapCell } from './heatmapCell';
 
 interface DayData {
   date: string;

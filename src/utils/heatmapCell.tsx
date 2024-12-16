@@ -1,5 +1,5 @@
 import { format } from 'date-fns';
-import { getIntensityColor } from '../../utils/dateUtils';
+import { getIntensityColor } from '../utils/dateUtils';
 
 interface Props {
   date: string | null;
