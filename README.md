@@ -7,3 +7,7 @@ pnpm install
 
 pnpm dev
 ```
+
+### 已知 Bug
+
+- 热力图数据显示错
