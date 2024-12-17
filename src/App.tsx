@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 import { RunningActivity } from './types';
 import { fetchActivities } from './utils/api';
+import { Navbar } from './components/NavBar';
 import { AnnualSummary } from './components/AnnualSummary';
 import { ActivityList } from './components/ActivityList';
 import { DistanceHeatmap } from './components/DistanceHeatmap';
@@ -39,13 +40,18 @@ function App() {
   }
 
   return (
+    <div className="min-h-screen bg-gray-100">
+      <Navbar selectedYear={0} onYearChange={function (): void {
+        throw new Error('Function not implemented.');
+      } } />
     <div className="min-h-screen bg-gray-100 p-6">
       <div className="max-w-3xl mx-auto space-y-8">
-        <h1 className="text-3xl font-bold text-gray-900">Running Dashboard</h1>
+        {/* <h1 className="text-3xl font-bold text-gray-900">Running Dashboard</h1> */}
         <AnnualSummary activities={activities} />
         <DistanceHeatmap activities={activities} />
         <ActivityList activities={activities} />
       </div>
+    </div>
     </div>
   );
 }
