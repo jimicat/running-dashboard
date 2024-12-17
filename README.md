@@ -16,4 +16,4 @@ pnpm dev
 
 > 目前菜单导航栏还没有完成。
 
-![running-dashboard](public\image\image.png)
+![running-dashboard](https://raw.githubusercontent.com/jimicat/running-dashboard/refs/heads/main/public/image/image.png)
