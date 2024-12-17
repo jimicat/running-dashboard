@@ -14,7 +14,6 @@ interface Props {
 // 获取本年活动的函数
 function getActivityByDate(activities: any[], currentYear: number) {
   const activityMap = new Map<string, number>();
-  console.log(activityMap)
   
   activities.forEach(activity => {
     const activityDate = new Date(activity.start_date_local);

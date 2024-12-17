@@ -1,6 +1,6 @@
 export function HeatmapLegend() {
   const intensities = [
-    { label: 'No activity', color: 'bg-gray-100' },
+    { label: '无活动', color: 'bg-gray-100' },
     { label: '< 3km', color: 'bg-green-200' },
     { label: '3-5km', color: 'bg-green-300' },
     { label: '5-8km', color: 'bg-green-400' },
